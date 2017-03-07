@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 声明当前页面的字符集 -->
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+	<!-- 当前页面三要素 -->
+	<title>音乐播放器 - MX_SEVEN</title>
+	<meta name="Keywords" content="关键字,关键字">
+	<meta name="description" content="">
+
+	<!-- 导入JS文件 -->
+	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+
+	<!-- JS Start -->
+	<script type="text/javascript">
+	
+		$(function(){
+			
+			//播放和暂停切换
+			$(".cenMusic").toggle(
+				function(){
+					$(this).removeClass("cenMusic").addClass("stopMusic");
+				},
+				function(){
+					$(this).removeClass("stopMusic").addClass("cenMusic");
+				}
+			);
+
+
+			//有声和无声切换
+			$(".volMusic").toggle(
+				function(){
+					$(this).removeClass("volMusic").addClass("muteMusic");
+				},
+				function(){
+					$(this).removeClass("muteMusic").addClass("volMusic");
+				}
+			);
+		})
+	</script>
+	<!-- END JS -->
+
+	<!-- CSS Start -->
+	<style type="text/css">
+		*{font-family: 微软雅黑;font-size: 12px;}
+
+		body{margin: 0;padding: 0;}
+
+		.box{margin: 0 auto;width:500px;height:300px;}
+
+		.blur{width:100%;height:100%;filter:blur(5px);-o-filter:blur(5px);-moz-filter:blur(5px);-webkit-filter:blur(5px);}
+
+		.boxWarp{width:500px;height:300px;position: absolute;top: 0;}
+
+		.musicPic{width: 153px;height: 125px;background: url(images/musicPic.png) no-repeat;margin-top: 20px;margin-left: 15px;display: inline-block;}
+
+		.musicInfo{width: 300px;height: 125px;margin-top: -127px;margin-left: 190px;}
+
+		.control{width: 100%;}
+
+		/* 小图标统一高度 start */
+		.controlHeight{width:16px;height:16px;display: inline-block;margin-left: 10px;margin-top: 10px;}
+		/* end 小图标统一高度 */
+
+		/* 上一首 start */
+		.upMusic{background-image: url(images/music/rewind.png);}
+		.upMusic:hover{opacity: 0.5;cursor: pointer;}
+		/* end 上一首 */
+
+		/* 播放暂停切换 start */
+		.cenMusic{background-image: url(images/music/play.png);}
+		.stopMusic{background-image:url(images/music/pause.png);}
+		.cenMusic:hover{opacity: 0.5;cursor: pointer;}
+		.stopMusic:hover{opacity: 0.5;cursor: pointer;}
+		/* end 播放暂停切换 */
+		
+		/* 下一首 start */
+		.downMusic{background-image: url(images/music/fastforward.png);}
+		.downMusic:hover{opacity: 0.5;cursor: pointer;}
+		/* end 下一首 */
+
+		/* 有声无声切换 start */
+		.volMusic{background-image: url(images/music/volume.png);}
+		.muteMusic{background-image: url(images/music/mute.png);}
+		.volMusic:hover{opacity: 0.5;cursor: pointer;}
+		.muteMusic:hover{opacity: 0.5;cursor: pointer;}
+		/* end 有声无声切换 */
+
+		.volRunBar{width:100px;height:3px;background:white;}
+		.volRunBarIn{width:20px;height:3px;background:red;}
+		
+		/* 进度条区域 start */
+		.runBar{width:90%;height:10px;margin:0 auto;margin-top:5px;background-color:white;}
+		.runBarIn{width:20px;height:10px;background:#99ff99;border-right:5px solid #cc00cc;}
+		/* end 进度条区域 */
+
+		/* 歌词区域 start */
+		.lrc{width:90%;height:110px;background:white;margin:0 auto;box-shadow:0 0 2px 1px;-o-box-shadow:0 0 2px 1px;-moz-box-shadow:0 0 2px 1px;-webkit-box-shadow:0 0 2px 1px;}
+		.lrcMain{width:100%;height:100%;margin-top:10px;text-align:center;}
+		/* end 歌词区域 */
+
+	</style>
+	<!-- END CSS -->
+
+</head>
+<body>
+
+	<div class="box">
+
+		<!-- 模糊效果 start -->
+		<div class="blur">
+			<img src="images/bg.jpg" width="500px" height="300px">
+		</div>
+		<!-- end 模糊效果 -->
+
+		<!-- 操作面板区域 start -->
+		<div class="boxWarp">
+
+			<!-- 左上角区域 start -->
+			<div class="musicPic"><img src="images/bg.jpg" width="116px" height="118px" style="padding-left:15px;"></div>
+			<!-- end 右上角区域 -->
+
+			<!-- 右上角的区域 start -->
+			<div class="musicInfo">
+				<label style="font-size:24px;color:white;display:block;">小苹果</label>
+				<label style="font-size:16px;color:white;display:block;line-height:28px;">筷子兄弟</label>
+				<label style="font-size:16px;color:white;display:block;line-height:28px;">专辑名</label>
+				<div class="control">
+					<div class="upMusic controlHeight"></div>
+					<div class="cenMusic controlHeight"></div>
+					<div class="downMusic controlHeight"></div>
+					<div class="volMusic controlHeight"></div>
+					<div class="volRunBar controlHeight">
+						<div class="volRunBarIn"></div>
+					</div>
+				</div>
+			</div>
+			<!-- end 右上角的区域 -->
+
+			<!-- 进度条区域 start -->
+			<div class="runBar">
+				<div class="runBarIn"></div>
+			</div>
+			<!-- end 进度条区域 -->
+
+			<!-- 歌词区域 start -->
+			<div class="lrc">
+				<div class="lrcMain">
+					你是我的小啊小苹果<br />
+					怎么爱你都不嫌多<br />
+					红红的小脸温暖了我的心窝<br />
+					点亮我生命的火<br />
+					火火火火~~~<br />
+				</div>
+			</div>
+			<!-- end 歌词区域 -->
+
+		</div>
+		<!-- end 操作面板区域 -->
+	</div>
+
+</body>
+</html>

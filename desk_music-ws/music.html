@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+	<head>
+		<!--声明当前编码集：utf-8-->
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<!-- 当前页面三要素 -->
+		<title>音乐播放 - MX_SEVEN</title>
+		<meta name="Keywords" content="关键字,关键字">
+		<meta name="description" content="">
+
+		<!-- CSS,JS -->
+		<style type="text/css">
+			*{margin:0;padding:0;}
+			body{background:url(images/bg.jpg) no-repeat top center;font-size:12px;font-family:微软雅黑;color:#666;}
+
+			/* music start */
+			.music{width:360px;height:436px;background:#ccc;margin:0px auto;}
+			.music h2{line-height:60px;text-align:center;font-size:22px;font-weight:500;}
+			.music .m_con{width:300px;height:376px;background:url(images/m_bg.gif)no-repeat;overflow:auto;font-size:14px;line-height:25px;padding-left:60px;}
+			/* end music */
+			
+			/* myself scroll start */
+			::-webkit-scrollbar{width:10px;height:6px;background:#ccc;}
+			::-webkit-scrollbar-button{background-color:#e5e5e5;}
+			::-webkit-scrollbar-track{background:#999;}
+			::-webkit-scrollbar-track-piece{background:#ccc;}
+			::-webkit-scrollbar-thumb{background:#666;}
+			::-webkit-scrollbar-corner{background:82AFFF;}
+			::-webkit-scrollbar-resizer{background:#ff0bee;}
+			/* end myself scroll */
+
+			/* 隐藏textarea start */
+			#lrc{display:none;}
+			/* end 隐藏textarea */
+			
+			/* 播放时歌词颜色 start */
+			.sel{color:red;}
+			/* end 播放时歌词颜色 */
+
+		</style>
+
+	</head>
+	<body>
+		
+		<!-- music start -->
+		<div class="music">
+			<h2>异乡人 - 李健</h2>
+			<div class="m_con"></div>
+		</div>
+		<!-- end music -->
+
+		<!-- textarea start -->
+		<textarea cols="50" rows="10" id="lrc">
+[ti:异乡人]
+[ar:李健]
+[al:]
+[00:01.35]异乡人
+[00:03.70]演唱：李健
+[00:05.80]
+[00:12.05]披星戴月地奔波
+[00:15.25]只为一扇窗
+[00:18.56]当你迷失在路上
+[00:21.64]能够看见那灯光
+[00:25.28]不知不觉把他乡
+[00:28.62]当作了故乡
+[00:31.98]只是偶尔难过时
+[00:34.92]不经意遥望远方
+[00:37.70]曾经的乡音
+[00:41.08]悄悄地隐藏
+[00:44.42]说不出的诺言
+[00:46.83]一直放心上
+[00:51.87]有许多时候
+[00:55.34]眼泪就要流
+[00:58.63]那扇窗是让我坚强的理由
+[01:05.28]小小的门口
+[01:08.63]还有她的温柔
+[01:11.92]给我温暖陪伴我左右
+[01:17.50]
+[01:48.65]披星戴月地奔波
+[01:51.84]只为一扇窗
+[01:55.30]当你迷失在路上
+[01:58.29]能够看见那灯光
+[02:01.92]不知不觉把他乡
+[02:05.35]当作了故乡
+[02:08.65]只是偶尔难过时
+[02:11.55]不经意遥望远方
+[02:14.38]曾经的乡音
+[02:17.68]悄悄地隐藏
+[02:21.07]说不出的诺言
+[02:23.57]一直放心上
+[02:28.78]有许多时候
+[02:31.94]眼泪就要流
+[02:35.24]那扇窗是让我坚强的理由
+[02:42.00]小小的门口
+[02:45.30]还有她的温柔
+[02:48.68]给我温暖陪伴我左右
+[02:55.28]有许多时候
+[02:58.70]眼泪就要流
+[03:01.93]那扇窗是让我坚强的理由
+[03:08.60]小小的门口
+[03:11.88]还有她的温柔
+[03:15.34]给我温暖陪伴我左右 
+[03:21.93]给我温暖陪伴我左右 
+[03:28.37]给我温暖陪伴我左右 
+[03:39.49]
+		</textarea>
+		<!-- end textarea -->
+
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//创建一个mp3播放器
+		var audioDom = document.createElement("audio");
+		//设置播放器的地址
+		audioDom.src = "mp3/1.mp3";
+		//控制自动播放
+		audioDom.autoplay = "autoplay";
+
+		//获取歌词
+		var lrc = $("#lrc").val();
+		//把歌词按照"["来截断
+		var lrcArr = lrc.split("[");
+
+		var html = "";
+		
+		for(var i = 0; i < lrcArr.length; i++){
+			//第二次分割"]"
+			var arr = lrcArr[i].split("]");
+			//取到时间
+			var timer = arr[0].split(".");
+			//取歌词
+			var message = arr[1];
+			var stime = timer[0].split(":");
+			var ms = stime[0]*60 + stime[1]*1;
+			if(message){
+				html += "<div class='time' id="+ms+">"+ message +"</div>";
+			}
+		}
+
+		$(".m_con").html(html);
+
+		audioDom.addEventListener("timeupdate",function(){
+			//获取当前播放的时间
+			var timer = this.currentTime;
+			//通过时间来驱动时间
+			var s = parseInt(timer);
+			for(var i = 0; i < s; i++){
+				$("#"+i).addClass("sel").siblings().removeClass("sel");
+			}
+		});
+
+	});
+</script>
+
+	</body>
+</html>

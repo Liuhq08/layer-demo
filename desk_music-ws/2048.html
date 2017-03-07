@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+	<head>
+		<!-- 声明当前编码集：utf-8 -->
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<!-- 网页三要素 -->
+		<title>2048游戏 - MX_SEVEN</title>
+		<meta name="Keywards" content="关键字,关键字">
+		<meta name="description" content="">
+
+		<!-- import CSS start -->
+		<link rel="stylesheet" type="text/css" href="css/2048.css">
+		<!-- end import CSS -->
+
+		<!-- import JS start -->
+		<script type="text/javascript" charset="utf-8" src="js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/support2048.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/showAnimation.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/main2048.js"></script>
+		<!-- end import JS -->
+
+	</head>
+	<body>
+		
+		<!-- 游戏头部 start -->
+    	<header>
+	        <a href="javascript:newgame();" id="newgamebutton">New Game</a>
+	        <p>score : <span id="score">0</span></p>
+   		 </header>
+		<!-- end 游戏头部 -->
+
+		<!-- 十六宫格 start -->
+		<div id="grid-container">
+		        <div class="grid-cell" id="grid-cell-0-0"></div>
+		        <div class="grid-cell" id="grid-cell-0-1"></div>
+		        <div class="grid-cell" id="grid-cell-0-2"></div>
+		        <div class="grid-cell" id="grid-cell-0-3"></div>
+
+		        <div class="grid-cell" id="grid-cell-1-0"></div>
+		        <div class="grid-cell" id="grid-cell-1-1"></div>
+		        <div class="grid-cell" id="grid-cell-1-2"></div>
+		        <div class="grid-cell" id="grid-cell-1-3"></div>
+
+		        <div class="grid-cell" id="grid-cell-2-0"></div>
+		        <div class="grid-cell" id="grid-cell-2-1"></div>
+		        <div class="grid-cell" id="grid-cell-2-2"></div>
+		        <div class="grid-cell" id="grid-cell-2-3"></div>
+
+		        <div class="grid-cell" id="grid-cell-3-0"></div>
+		        <div class="grid-cell" id="grid-cell-3-1"></div>
+		        <div class="grid-cell" id="grid-cell-3-2"></div>
+		        <div class="grid-cell" id="grid-cell-3-3"></div>
+   		 </div>
+		<!-- end 十六宫格 -->
+
+
+	</body>
+
+</html>
+
+
+
+
+

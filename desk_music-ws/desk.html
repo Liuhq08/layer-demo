@@ -1,0 +1,152 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<!-- 声明当前页面的编码集utf-8 -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<!-- 当前页面的三要素 -->
+		<title>EASY桌面系统 --MX_SEVEN</title>
+		<meta name="Keywords" content="关键字,关键字">
+		<meta name="description" content="">
+
+		<!-- css,js -->
+		<!-- CSS:层叠样式表 -->
+		<style type="text/css">
+			*{margin:0;padding:0;cursor:url(e:\desk_music\images\cursors\1.ani),auto;}
+
+			body{background:url(images/bg.jpg) top center;font-size:12px;font-family:微软雅黑;color:#666;}
+			
+			/* menu start */
+			.menu{width:200px;background:#FFF;box-shadow:1px 1px 10px 1px #fff;position:absolute;top:0;left:0;display:none;}
+			.menu ul li{border-bottom:1px solid #E0E0E0;list-style:none;line-height:34px;padding-left:15px;cursor:pointer;font-size:14px;}
+			.menu ul li:hover{background:#647E7C;color:#fff;}
+			/* end menu */
+			#text{font-size:16px;color:#fff;}
+
+			/* 任务栏 start */
+			.task{width: 100%;height: 40px;background-color: white;position: absolute;bottom: 0;}
+			/* end 任务栏 */
+
+
+		</style>
+
+		<!-- JS: -->
+		
+	</head>
+ 	<body>
+		
+		<!-- menu start -->
+		<div class="menu">
+			<ul>
+				<li onclick="menu(1)">听点音乐</li>
+				<li onclick="menu(2)">看点电影</li>
+				<li onclick="menu(3)">今日头条</li>
+				<li onclick="menu(4)">今日天气</li>
+				<li onclick="menu(5)">2048游戏</li>
+				<li onclick="menu(6)">音乐播放器</li>
+				<li onclick="menu(7)">注销</li>
+			</ul>
+		</div>
+		<!-- end menu -->
+
+		<p id="text"></p>
+
+		<!-- 任务栏 start -->
+		<div class="task"></div>
+		<!-- end 任务栏 -->
+
+	<!-- 引入jquery官方类库 -->
+	<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
+	<script type="text/javascript">
+
+		//屏蔽默认的浏览器右键
+		document.oncontextmenu = function(){
+			return false;
+		}
+
+		//实现右键操作
+		$(document).mousedown(function(e){
+			var key = e.which; //获取键盘的值(右键3，滚轮2，左键1)
+			if(key == 3){
+				var x = e.clientX;
+				var y = e.clientY;
+				$("#text").html("X: "+x+"  Y:"+y);
+				$(".menu").show().css({left:x,top:y});
+			};
+		});
+
+		//点击空白区域，隐藏右键
+		$(document).click(function(){
+			$(".menu").hide();
+		});
+
+		//点击右键
+		function menu(flag){
+			if(flag == 1){
+				layer.open({
+					type: 2,
+					title: "音乐",
+					shade:false,
+					shadeClose: false,
+					shift:6,
+					maxmin:true,
+					moveType:1,
+					area: ['360px','472px'],
+					content: 'music.html'
+				});
+			}
+
+			if(flag == 2){
+				layer.msg("此功能尚未开发！");
+			}
+
+			if(flag == 3){
+				layer.msg("此功能尚未开发！");
+			}
+
+			if(flag == 4){
+				layer.msg("天气功能正在赶工中！");
+			}
+
+			if(flag == 5){
+				layer.open({
+					type: 2,
+					title: "2048小游戏",
+					shade:false,
+					shadeClose: false,
+					shift:3,
+					maxmin:true,
+					moveType:1,
+					area: ['530px','652px'],
+					content: '2048.html'
+				});
+			}
+
+			if(flag == 6){
+				layer.open({
+					type: 2,
+					title: "音乐播放器",
+					shade:false,
+					shadeClose: false,
+					shift:6,
+					maxmin:true,
+					moveType:0,
+					area: ['500px','340px'],
+					content: 'music_Box.html'
+				});
+			}
+
+			if(flag == 7){
+				layer.msg("此功能尚未开发！");
+			}
+		}
+
+		//jQuery入口函数
+		$(function(){
+			
+		});
+	</script>
+
+
+	</body>
+</html>
